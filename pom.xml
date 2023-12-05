@@ -56,7 +56,7 @@
 
     <dependencies>
         <!-- 私有jar -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.wishes</groupId>
             <artifactId>AbsoluteLayout-origin</artifactId>
             <version>1.0</version>
@@ -72,18 +72,18 @@
             <version>1.0</version>
         </dependency>
 
-        <!--idea的form_rt.jar依赖包-->
+        &lt;!&ndash;idea的form_rt.jar依赖包&ndash;&gt;
         <dependency>
             <groupId>com.idea</groupId>
             <artifactId>forms</artifactId>
             <version>1.0</version>
         </dependency>
-        <!--beauty eye依赖包-->
+        &lt;!&ndash;beauty eye依赖包&ndash;&gt;
         <dependency>
             <groupId>org.lnf</groupId>
             <artifactId>beautyeye</artifactId>
             <version>1.0</version>
-        </dependency>
+        </dependency>-->
         <!-- 私有jar结束 -->
 
         <!-- 网络依赖jar -->
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.27</version>
+            <version>1.2.17</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
