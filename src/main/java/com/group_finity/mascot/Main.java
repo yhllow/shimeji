@@ -13,7 +13,6 @@ import com.wishes.constant.Constant;
 import com.wishes.fix.OriginEngineFix;
 import com.wishes.update.DownloadDialog;
 import com.wishes.utils.FormatUtils;
-import com.wishes.utils.UpdateChecker;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.w3c.dom.Document;
@@ -29,8 +28,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -82,21 +81,6 @@ public class Main {
 
     public static void main(final String[] args) {
         try {
-            //检测更新
-            new Thread(() -> {
-                try {
-                    if (UpdateChecker.checkUpdate(
-                            UpdateChecker.CHECK_UPDATE_TYPE
-                                    .MANUAL) != null) {
-                        //显示更新提示框
-                        new DownloadDialog();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    log.log(Level.SEVERE, "检测更新时请求数据失败！", e);
-                }
-            }).start();
-
             //实例化程序主体
             getInstance().run();
         } catch (OutOfMemoryError err) {
@@ -712,8 +696,8 @@ public class Main {
                         gridBag.gridy++;
                         panel.add(new JSeparator(), gridBag);
                         gridBag.gridy++;
-                        panel.add(btnUpdate, gridBag);
-                        gridBag.gridy++;
+//                        panel.add(btnUpdate, gridBag);
+//                        gridBag.gridy++;
                         panel.add(btnDismissAll, gridBag);
 
                         try {

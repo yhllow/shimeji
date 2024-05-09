@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -20,7 +21,7 @@ import java.util.Properties;
 public class OriginEngineFix {
     private static Logger logger = Logger.getLogger(OriginEngineFix.class);
 
-    private String BASE_PATH = "";
+    private String BASE_PATH = System.getProperty("user.dir");//项目根目录
 
     private String BASE_ENVIRONMENT_PATH = "";
 
@@ -45,19 +46,14 @@ public class OriginEngineFix {
      * @return InputStream
      */
     public InputStream propertiesLoder(boolean isDevEnvironment, String fileName) throws FileNotFoundException {
-        String basePath = System.getProperty("user.dir");//项目根目录
-        BASE_PATH = basePath;
-        String path = "";
-        if (isDevEnvironment) {
-            //如果是开发环境
-            BASE_ENVIRONMENT_PATH = basePath + "\\src\\main\\resources\\conf\\";
-            BASE_IMG_PATH = basePath + "\\src\\main\\resources\\img\\";
-            path = BASE_ENVIRONMENT_PATH + fileName;
-        } else {
-            BASE_ENVIRONMENT_PATH = basePath + "\\conf\\";
-            BASE_IMG_PATH = basePath + "\\img\\";
-            path = BASE_ENVIRONMENT_PATH + fileName;
+        if (isDevEnvironment) { // 如果是开发环境
+            URL classPath = this.getClass().getClassLoader().getResource("");
+            if (classPath != null) BASE_PATH = classPath.getPath();
         }
+
+        BASE_ENVIRONMENT_PATH = BASE_PATH + "\\conf\\";
+        BASE_IMG_PATH = BASE_PATH + "\\img\\";
+        String path = BASE_ENVIRONMENT_PATH + fileName;
 
         InputStream is = new FileInputStream(path);
         logger.info("读取文件：" + path);

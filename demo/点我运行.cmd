@@ -1,1 +1,1 @@
-java -jar shimeji.jar
+.\jre\bin\java -jar shimeji.jar
